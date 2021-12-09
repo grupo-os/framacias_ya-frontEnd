@@ -10,14 +10,10 @@
     "react-router": "6.0.0",
     "react-router-dom": "^6.0.0",
     "react-scripts": "4.0.3",
-<<<<<<< HEAD
     "reactstrap": "^9.0.1",
-    "web-vitals": "^1.1.2"
-=======
-    "styled-components": "^5.3.3",
     "web-vitals": "^1.1.2",
+    "styled-components": "^5.3.3",
     "yup": "^0.32.11"
->>>>>>> 14d75ae2a1914ab93404cd6c60184568522c24f7
   },
   "scripts": {
     "start": "react-scripts start",
