@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "animate.css": "^4.1.1",
+    "axios": "^0.24.0",
     "boxicons": "^2.0.9",
     "react": "^17.0.2",
     "react-bootstrap": "^2.0.2",

@@ -1,41 +1,36 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
+import { DataContext } from "../context/DataProvider.jsx";
 import { Link } from "react-router-dom";
-import IMG from "../assets/med01.png";
+import { useContext } from "react";
 import "../styles/Spin.css";
+import "animate.css";
 
 export const FarmaItems = () => {
-  const URL = "https://backend-farmacias-ya.herokuapp.com/productos/todos";
-  const [items, setItems] = useState([]);
+  const value = useContext(DataContext);
+  const addCarrito = value.addCarrito;
+  const fetchMedicamentos = value.fetchMedicamentos;
+  const [items] = value.items;
 
-  const fetchMedicamentos = async () => {
-    try {
-      const peticion = await fetch(URL);
-      const res = await peticion.json();
-      setItems(res);
-    } catch (error) {
-      console.log(error);
-    }
-  };
   useEffect(() => {
     fetchMedicamentos();
   }, []);
-
+  console.log(value.items._id);
   return items.length > 0 ? (
     items.map((item) => {
       return (
-        <div className="producto">
-          <Link to="#">
-            <div className="producto__img">
-              <img src={item.img} alt="img" />
-            </div>
-          </Link>
+        <div className="producto animate__animated animate__fadeInUp">
+          <div className="producto__img">
+            <img src={item.img} alt="img" />
+          </div>
           <div className="producto__footer">
             <h1> {item.nombre_producto} </h1>
             <p>precio:</p>
             <p className="price">${item.precio}</p>
           </div>
           <div className="buttom">
-            <button className="btn">Añadir al carrito</button>
+            <button className="btn" onClick={() => addCarrito(item._id)}>
+              Añadir al carrito
+            </button>
             <div>
               <Link to="#" className="a">
                 Vista

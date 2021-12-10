@@ -2,6 +2,8 @@ import React from "react";
 import "../styles/Register.css";
 
 export const Register = () => {
+  
+  
   return (
     <div className="container">
       <div className="row main">
@@ -14,9 +16,9 @@ export const Register = () => {
               </label>
               <div className="cols-sm-10">
                 <div className="input-group">
-                  <span className="input-group-addon">
+                  {/* <span className="input-group-addon">
                     <i className="fa fa-user fa" aria-hidden="true"></i>
-                  </span>
+                  </span> */}
                   <input
                     type="text"
                     className="form-control"
@@ -34,9 +36,9 @@ export const Register = () => {
               </label>
               <div className="cols-sm-10">
                 <div className="input-group">
-                  <span className="input-group-addon">
+                  {/* <span className="input-group-addon">
                     <i className="fa fa-envelope fa" aria-hidden="true"></i>
-                  </span>
+                  </span> */}
                   <input
                     type="text"
                     className="form-control"
@@ -54,9 +56,9 @@ export const Register = () => {
               </label>
               <div className="cols-sm-10">
                 <div className="input-group">
-                  <span className="input-group-addon">
+                  {/* <span className="input-group-addon">
                     <i className="fa fa-users fa" aria-hidden="true"></i>
-                  </span>
+                  </span> */}
                   <input
                     type="text"
                     className="form-control"
@@ -74,9 +76,9 @@ export const Register = () => {
               </label>
               <div className="cols-sm-10">
                 <div className="input-group">
-                  <span className="input-group-addon">
+                  {/* <span className="input-group-addon">
                     <i className="fa fa-lock fa-lg" aria-hidden="true"></i>
-                  </span>
+                  </span> */}
                   <input
                     type="password"
                     className="form-control"
@@ -94,9 +96,9 @@ export const Register = () => {
               </label>
               <div className="cols-sm-10">
                 <div className="input-group">
-                  <span className="input-group-addon">
+                  {/* <span className="input-group-addon">
                     <i className="fa fa-lock fa-lg" aria-hidden="true"></i>
-                  </span>
+                  </span> */}
                   <input
                     type="password"
                     className="form-control"

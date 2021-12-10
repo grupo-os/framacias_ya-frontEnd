@@ -17,7 +17,7 @@ export const Routing = () => {
     <Routes>
       <Route
         exact
-        path="/home"
+        path="/"
         element={<Home data={landingPageData.Header} />}
       />
       <Route exact path="/post" element={<Post />} />

@@ -1,13 +1,16 @@
 import { Link } from "react-router-dom";
 import styles from "../styles/Navbar.module.css";
-import logo from "../assets/logo2.png"
+import logo from "../assets/logo2.png";
+import "../styles/Carrito.css"
 
 export function Navbar() {
+  
+
   return (
     <nav className={`navbar navbar-expand-lg navbar-light ${styles.nav}`}>
       <div className="container-fluid">
         <Link className={`navbar-brand ${styles.logo}`} to="/">
-          <img src={logo} alt="logo"  width="50"/>
+          <img src={logo} alt="logo" width="50" />
         </Link>
         <button
           className="navbar-toggler"
@@ -23,7 +26,7 @@ export function Navbar() {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
-              <Link className="nav-link" to="/home">
+              <Link className="nav-link" to="/">
                 Inicio{" "}
               </Link>
             </li>
@@ -43,12 +46,14 @@ export function Navbar() {
               </Link>
             </li>
           </ul>
-            <Link className="btn btn-secondary mx-2" type="submit" to="/login">
-                Iniciar sesión{" "}
-            </Link>
-            <Link className="btn btn-secondary mx-2" type="submit" to="/register">
-                Registrarse{" "}
-            </Link>
+
+          
+          <Link className="btn btn-secondary mx-2" type="submit" to="/login">
+            Iniciar sesión{" "}
+          </Link>
+          <Link className="btn btn-secondary mx-2" type="submit" to="/register">
+            Registrarse{" "}
+          </Link>
         </div>
       </div>
     </nav>
