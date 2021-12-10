@@ -27,6 +27,25 @@ export const Register = () => {
                 </div>
               </div>
             </div>
+            <div className="form-group">
+              <label for="name" className="cols-sm-2 control-label">
+               Apellido
+              </label>
+              <div className="cols-sm-10">
+                <div className="input-group">
+                  <span className="input-group-addon">
+                    <i className="fa fa-user fa" aria-hidden="true"></i>
+                  </span>
+                  <input
+                    type="text"
+                    className="form-control"
+                    name="apellido"
+                    id="apellido"
+                    placeholder="ingrese su apellido"
+                  />
+                </div>
+              </div>
+            </div>
 
             <div className="form-group">
               <label for="email" className="cols-sm-2 control-label">
