@@ -8,6 +8,7 @@ import { FormularioProductos } from "../pages/FormularioProductos";
 import { useState, useEffect } from "react";
 import JsonData from "../data/data.json";
 
+
 export const Routing = () => {
   const [landingPageData, setLandingPageData] = useState({});
   useEffect(() => {
@@ -29,6 +30,7 @@ export const Routing = () => {
         path="/formulario-productos"
         element={<FormularioProductos />}
       />
+      
     </Routes>
   );
 };

@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import IMG from "../assets/med01.png";
 import "../styles/Spin.css";
+import { Link } from "react-router-dom";
+import { useNavigate } from 'react-router';
+
 
 export const FarmaItems = () => {
+  let navigate = useNavigate();
   const URL = "https://backend-farmacias-ya.herokuapp.com/productos/todos";
   const [items, setItems] = useState([]);
 
@@ -21,6 +24,7 @@ export const FarmaItems = () => {
   }, []);
 
   return items.length > 0 ? (
+    
     items.map((item) => {
       return (
         <div className="producto">
@@ -34,17 +38,14 @@ export const FarmaItems = () => {
             <p>precio:</p>
             <p className="price">${item.precio}</p>
           </div>
-          <div className="buttom">
-            <button className="btn">Añadir al carrito</button>
-            <div>
-              <Link to="#" className="a">
-                Vista
-              </Link>
-            </div>
+          <div className="btn col-auto md-12">
+            <button className="btn-warning" onClick={()=>{navigate('/home')}}>modificar</button>
+            <button className="btn-danger" onDoubleClick={()=>{navigate('/home')}}>borrar</button>
           </div>
         </div>
       );
     })
+
   ) : (
     <div class="loader">Loading...</div>
   );
