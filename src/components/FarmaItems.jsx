@@ -18,45 +18,50 @@ export const FarmaItems = () => {
       console.log(error);
     }
   };
+
+
+
   useEffect(() => {
     fetchMedicamentos();
+
   }, []);
+
 
   return items.length > 0 ? (
     
     items.map((item) => {
       return (
-        item.activo ? (
-          <div className="producto">
-          <Link to="#">
-            <div className="producto__img">
-              <img src={item.img} alt="img" />
+        item.activo ? (  
+            <div className="producto">
+            <Link to="#">
+              <div className="producto__img">
+                <img src={item.img} alt="img" />
+              </div>
+            </Link>
+            <div className="producto__footer">
+              <h1> {item.nombre_producto} </h1>
+              <p>precio:</p>
+              <p className="price">${item.precio}</p>
             </div>
-          </Link>
-          <div className="producto__footer">
-            <h1> {item.nombre_producto} </h1>
-            <p>precio:</p>
-            <p className="price">${item.precio}</p>
+            <div className="btn col-auto md-12">
+              <button
+                className="btn-warning"
+                onClick={() => {
+                  navigate("/home");
+                }}
+              >
+                modificar
+              </button>
+              <button
+                className="btn-danger"
+                onDoubleClick={() => {
+                  navigate("/home");
+                }}
+              >
+                borrar
+              </button>
+            </div>
           </div>
-          <div className="btn col-auto md-12">
-            <button
-              className="btn-warning"
-              onClick={() => {
-                navigate("/home");
-              }}
-            >
-              modificar
-            </button>
-            <button
-              className="btn-danger"
-              onDoubleClick={() => {
-                navigate("/home");
-              }}
-            >
-              borrar
-            </button>
-          </div>
-        </div>
         ):(null)
       );
     })

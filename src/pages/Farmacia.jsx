@@ -3,6 +3,8 @@ import { FarmaItems } from "../components/FarmaItems";
 import "../styles/Farmacia.css";
 
 export const Farmacia = () => {
+
+  
   return (
     <>
       <h1 className="title">PRODUCTOS</h1>
@@ -12,13 +14,14 @@ export const Farmacia = () => {
           type="search"
           placeholder="Search"
           aria-label="Search"
+          
         />
         <button class="btn btn-dark" type="submit">
           Search
         </button>
       </div>
       <div className="productos">
-        <FarmaItems />
+        <FarmaItems/>
       </div>
     </>
   );

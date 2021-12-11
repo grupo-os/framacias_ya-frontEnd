@@ -80,7 +80,7 @@ export const FormularioProductos = () => {
       "https://backend-farmacias-ya.herokuapp.com/productos/subir-producto",
       options
     );
-    setTimeout(function(){  navigate("/farmacia");; }, 4000);
+    setTimeout(function(){  navigate("/farmacia");; }, 1000);
     //const res = postData.json();
     //console.log(res);
     ////////////////////
