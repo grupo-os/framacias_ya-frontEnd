@@ -2,8 +2,7 @@ import React, { useEffect, useState } from "react";
 import IMG from "../assets/med01.png";
 import "../styles/Spin.css";
 import { Link } from "react-router-dom";
-import { useNavigate } from 'react-router';
-
+import { useNavigate } from "react-router";
 
 export const FarmaItems = () => {
   let navigate = useNavigate();
@@ -27,7 +26,8 @@ export const FarmaItems = () => {
     
     items.map((item) => {
       return (
-        <div className="producto">
+        item.activo ? (
+          <div className="producto">
           <Link to="#">
             <div className="producto__img">
               <img src={item.img} alt="img" />
@@ -39,13 +39,27 @@ export const FarmaItems = () => {
             <p className="price">${item.precio}</p>
           </div>
           <div className="btn col-auto md-12">
-            <button className="btn-warning" onClick={()=>{navigate('/home')}}>modificar</button>
-            <button className="btn-danger" onDoubleClick={()=>{navigate('/home')}}>borrar</button>
+            <button
+              className="btn-warning"
+              onClick={() => {
+                navigate("/home");
+              }}
+            >
+              modificar
+            </button>
+            <button
+              className="btn-danger"
+              onDoubleClick={() => {
+                navigate("/home");
+              }}
+            >
+              borrar
+            </button>
           </div>
         </div>
+        ):(null)
       );
     })
-
   ) : (
     <div class="loader">Loading...</div>
   );
