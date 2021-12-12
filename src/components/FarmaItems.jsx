@@ -26,6 +26,7 @@ export const FarmaItems = () => {
           <div className="producto__footer">
             <h1> {item.nombre_producto} </h1>
             <p>precio:</p>
+
             <p className="price">${item.precio}</p>
           </div>
           <div className="buttom">
