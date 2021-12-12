@@ -7,7 +7,7 @@ import "animate.css";
 import { useNavigate } from "react-router";
 
 export const FarmaItems = () => {
-  navigate = useNavigate();
+  const navigate = useNavigate();
   const value = useContext(DataContext);
   const addCarrito = value.addCarrito;
   const fetchMedicamentos = value.fetchMedicamentos;
@@ -35,8 +35,6 @@ export const FarmaItems = () => {
             <p className="price">${item.precio}</p>
           </div>
           <div className="btn col-auto md-12">
-            <button className="btn-warning" onClick={()=>{navigate('/home')}}>modificar</button>
-            <button className="btn-danger" onDoubleClick={()=>{navigate('/home')}}>borrar</button>
             <button
               className="btn-warning"
               onClick={() => {
