@@ -4,10 +4,8 @@ import { Link } from "react-router-dom";
 import { useContext } from "react";
 import "../styles/Spin.css";
 import "animate.css";
-import { useNavigate } from "react-router";
 
 export const FarmaItems = () => {
-  const navigate = useNavigate();
   const value = useContext(DataContext);
   const addCarrito = value.addCarrito;
   const fetchMedicamentos = value.fetchMedicamentos;
@@ -20,8 +18,8 @@ export const FarmaItems = () => {
   return items.length > 0 ? (
     items.map((item) => {
       return (
-        items.activo ?
-        <div className="producto animate__animated animate__fadeInUp">
+        item.activo ? (
+          <div className="producto animate__animated animate__fadeInUp">
           <div className="producto__img">
             <img src={item.img} alt="img" />
           </div>
@@ -40,7 +38,8 @@ export const FarmaItems = () => {
               </Link>
             </div>
           </div>
-        </div> : null
+        </div>
+        ):null
       );
     })
   ) : (
