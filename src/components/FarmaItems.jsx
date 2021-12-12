@@ -21,7 +21,7 @@ export const FarmaItems = () => {
     items.map((item) => {
       return (
         items.activo ?
-        (<div className="producto animate__animated animate__fadeInUp">
+        <div className="producto animate__animated animate__fadeInUp">
           <div className="producto__img">
             <img src={item.img} alt="img" />
           </div>
@@ -40,7 +40,7 @@ export const FarmaItems = () => {
               </Link>
             </div>
           </div>
-        </div>) : null
+        </div> : null
       );
     })
   ) : (
