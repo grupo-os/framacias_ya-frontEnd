@@ -4,53 +4,50 @@ import * as yup from "yup";
 import { useNavigate } from 'react-router-dom';
 import logo from "../assets/logo2.png";
 
-export const FormularioModificado = (props) => {
+export const FormularioModificado = () => {
   
   let schemaProductos = yup.object().shape({
-    _id: yup.string().required(),
     nomFarmacia: yup.string().required(),
     nomProducto: yup.string().required(),
     nomProductoGen: yup.string().required(),
     codigoProducto: yup.number().required().positive(),
-    imagen: yup.string().required(),
+    imagen: yup.string(),
     descrip: yup.string().required(),
     precio: yup.number().required().positive(),
-    descuento: yup.number().required().positive(),
+    descuento: yup.number().required().positive().max(90).min(0),
     stock: yup.number().required().positive().integer()
   });
 
   const navigate = useNavigate();
-  const _id = props;
   const [nomFarmacia, setNomFarmacia] = useState("");
   const [nomProducto, setNomProducto] = useState("");
   const [nomProductoGen, setNomProductoGen]=useState("");
   const [codigoProducto, setCodigoProducto]=useState("");
-  const [imagen, setImagen] = useState("");
+  const [imagen, setImagen] = useState(null);
   const [descrip, setDescrip] = useState("");
   const [precio, setPrecio] = useState("");
   const [descuento, setDescuento] = useState("");
   const [stock, setStock] = useState("");
   const [habilitado, setHabilitado] = useState(false);
   //////////////////////////////
-
   useEffect(() => {
     schemaProductos
       .isValid({
-        _id,
+       
         nomFarmacia,
         nomProducto,
         nomProductoGen,
         codigoProducto,
-        imagen,
         descrip,
         precio,
         descuento,
-        stock
+        stock,
+        imagen
       })
       .then((valid) => {
         valid ? setHabilitado(true) : setHabilitado(false);
       });
-  }, [_id, nomFarmacia, nomProducto, nomProductoGen, codigoProducto, imagen, descrip, precio, descuento, stock]);
+  }, [ nomFarmacia, nomProducto, nomProductoGen, codigoProducto, imagen, descrip, precio, descuento, stock]);
 
   //////////////////////////////
 
@@ -81,7 +78,7 @@ export const FormularioModificado = (props) => {
     };
 
     const postData = await fetch(
-      "https://backend-farmacias-ya.herokuapp.com/productos/editar/"+_id,
+      "https://backend-farmacias-ya.herokuapp.com/productos/editar/",
       options
     );
     setTimeout(function(){navigate("/farmacia");; }, 1000);
@@ -89,8 +86,6 @@ export const FormularioModificado = (props) => {
     //console.log(res);
     ////////////////////
   };
-
-
 
   return (
     <div>
@@ -152,12 +147,12 @@ export const FormularioModificado = (props) => {
             <div className="form-group col-md-12">
             <label for="inputAddress">link de imagen</label>
             <input
-              type="text"
+              type="file"
               className="form-control"
               id="imagen"
               placeholder="ingrese el link de la imagen"
               onChange={(e) => {
-                setImagen(e.target.value);
+                setImagen(e.target.files);
               }}
             />
           </div>

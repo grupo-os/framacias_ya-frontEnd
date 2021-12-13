@@ -6,6 +6,8 @@ import "../styles/Spin.css";
 import "animate.css";
 import { axios } from "axios";
 import { useNavigate } from 'react-router-dom';
+import { FormularioModificado } from "../pages/FormularioModificado.jsx";
+
 
 export const FarmaItems = () => {
   const value = useContext(DataContext);
@@ -61,6 +63,7 @@ async function postData(url = 'https://backend-farmacias-ya.herokuapp.com/produc
           </div>
           <div className="buttom">
             <button className="btn" onDoubleClick={() =>{postData("https://backend-farmacias-ya.herokuapp.com/producto/eliminar/"+item._id)}}>
+            
               Borrar
             </button>
             <div>

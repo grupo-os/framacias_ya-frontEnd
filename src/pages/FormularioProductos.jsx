@@ -22,7 +22,7 @@ export const FormularioProductos = () => {
   const [nomProducto, setNomProducto] = useState("");
   const [nomProductoGen, setNomProductoGen]=useState("");
   const [codigoProducto, setCodigoProducto]=useState("");
-  const [imagen, setImagen] = useState("");
+  const [imagen, setImagen] = useState(null);
   const [descrip, setDescrip] = useState("");
   const [precio, setPrecio] = useState("");
   const [descuento, setDescuento] = useState("");
@@ -148,12 +148,12 @@ export const FormularioProductos = () => {
             <div className="form-group col-md-12">
             <label for="inputAddress">link de imagen</label>
             <input
-              type="text"
+              type="file"
               className="form-control"
               id="imagen"
               placeholder="ingrese el link de la imagen"
               onChange={(e) => {
-                setImagen(e.target.value);
+                setImagen(e.target.files);
               }}
             />
           </div>

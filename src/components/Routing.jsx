@@ -7,7 +7,7 @@ import { Farmacia } from "../pages/Farmacia";
 import { FormularioProductos } from "../pages/FormularioProductos";
 import { useState, useEffect } from "react";
 import JsonData from "../data/data.json";
-import { FormularioModificado } from "../pages/FormularioModificar";
+import { FormularioModificado } from "../pages/FormularioModificado";
 import { NavItem } from "react-bootstrap";
 
 export const Routing = () => {
