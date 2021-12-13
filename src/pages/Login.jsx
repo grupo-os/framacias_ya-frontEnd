@@ -1,16 +1,68 @@
 import "../styles/Login.css";
 import React, { useState } from "react";
-import { useEffect } from "react";
+import loginServicios from "../API/consultaLogin";
 
 export const Login = () => {
+  //Creamos un manejador de estado para los mensajes...
+  const [errorMessage, setErrorMessage] = useState(null);
 
-  
+  //Creamos lo manejadores de estado.
+  const [email, setemail] = useState("");
+  const [password, setPassword] = useState("");
+  const [user, setUser] = useState(null);
+
+  if (localStorage.getItem(null)) {
+    setUser("");
+    console.log(user + " se limipo ");
+  }
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    try {
+        
+      //le pasamos las credenciales
+      const user = await loginServicios.buscador({
+        email,
+        password,
+      });
+
+      //guardarmos la informacion en el localStorage
+      window.localStorage.setItem(
+        //Lo guardamos comos string
+        "loggedUser",
+        JSON.stringify(user)
+      );
+      //Guardamos la informacion
+      setUser(user);
+
+      //reseteamos los estados
+      setemail("");
+      setPassword("");
+      //Redireccionamos a la ruta home
+      window.location.href = "/";
+
+      setErrorMessage("Sesion Iniciada");
+      setTimeout(() => {
+        setErrorMessage(null);
+      }, 3000);
+    } catch (e) {
+      //Si hay error se envia un mensaje que dura 3s.
+      setErrorMessage("Usuario o Contraseña incorrecta");
+      setTimeout(() => {
+        setErrorMessage(null);
+      }, 3000);
+      console.log("Error", e);
+    }
+    console.log(email)
+    console.log(password)
+  };
   return (
     <div class="login-form">
       <div class="cotainer">
         <div class="row justify-content-center">
           <div class="col-md-8">
-            <div class="card">
+            <form class="card" onSubmit={handleSubmit}>
               <div class="card-header">Register</div>
               <div class="card-body">
                 <div class="form-group row">
@@ -18,7 +70,7 @@ export const Login = () => {
                     for="email_address"
                     class="col-md-4 col-form-label text-md-right"
                   >
-                    E-Mail Address
+                    Correo electrónico
                   </label>
                   <div class="col-md-6">
                     <input
@@ -28,6 +80,8 @@ export const Login = () => {
                       name="email-address"
                       required
                       autofocus
+                      value={email}
+                      onChange={({ target }) => setemail(target.value)}
                     />
                   </div>
                 </div>
@@ -46,6 +100,8 @@ export const Login = () => {
                       class="form-control"
                       name="password"
                       required
+                      value={password}
+                      onChange={({ target }) => setPassword(target.value)}
                     />
                   </div>
                 </div>
@@ -67,9 +123,13 @@ export const Login = () => {
                   <a href="#" class="btn btn-link">
                     Forgot Your Password?
                   </a>
+                  <div>
+                    <br />
+                    <p style={{ color: "red" }}>{errorMessage}</p>
+                  </div>
                 </div>
               </div>
-            </div>
+            </form>
           </div>
         </div>
       </div>

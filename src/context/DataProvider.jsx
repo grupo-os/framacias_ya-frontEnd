@@ -88,7 +88,7 @@ export const DataProvider = (props) => {
     });
     setItemBuscado(resultadoBusqueda);
   };
-  console.log(itemBuscado)
+  // console.log(itemBuscado)
 
   //ALAMCENAMOS LOS DATOS Y FUNCIONES A UTILIZAR...
   const value = {

@@ -11,17 +11,15 @@ import { ProductDetails } from "../pages/ProductDetails";
 import { FarmaciaReg } from "../pages/FarmaciaReg";
 
 export const Routing = () => {
-  const [landingPageData, setLandingPageData] = useState({});
+  
+
   useEffect(() => {
     setLandingPageData(JsonData);
   }, []);
+
   return (
     <Routes>
-      <Route
-        exact
-        path="/"
-        element={<Home data={landingPageData.Header} />}
-      />
+      <Route exact path="/" element={<Home data={landingPageData.Header} />} />
       <Route exact path="/post" element={<Post />} />
       <Route exact path="/login" element={<Login />} />
       <Route exact path="/register" element={<Register />} />
@@ -33,7 +31,6 @@ export const Routing = () => {
       />
       <Route exact path="/producto/:_id" element={<ProductDetails />} />
       <Route exact path="/register/farmacia" element={<FarmaciaReg />} />
-
     </Routes>
   );
 };
