@@ -11,10 +11,10 @@ export const Farmacia = () => {
   const [menu, setMenu] = value.menu;
 
   //ABRE LA VENTANA DEL CARRITO...
-  const toogleMenu = () => {
+ /*  const toogleMenu = () => {
     setMenu(!menu);
     console.log(menu);
-  };
+  }; */
 
   return (
     <>
@@ -31,11 +31,11 @@ export const Farmacia = () => {
         </button>
       </div>
 
-      <div className="cart" onClick={toogleMenu}>
+     {/*  <div className="cart" onClick={toogleMenu}>
         <box-icon name="cart"></box-icon>
         <span className="item__total"> {carrito.length} </span>
-      </div>
-      <Carrito />
+      </div> */}
+     {/*  <Carrito /> */}
       <div className="productos">
         <FarmaItems />
       </div>

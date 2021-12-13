@@ -7,6 +7,8 @@ import { Farmacia } from "../pages/Farmacia";
 import { FormularioProductos } from "../pages/FormularioProductos";
 import { useState, useEffect } from "react";
 import JsonData from "../data/data.json";
+import { FormularioModificado } from "../pages/FormularioModificar";
+import { NavItem } from "react-bootstrap";
 
 export const Routing = () => {
   const [landingPageData, setLandingPageData] = useState({});
@@ -19,6 +21,11 @@ export const Routing = () => {
         exact
         path="/"
         element={<Home data={landingPageData.Header} />}
+      />
+      <Route
+        exact
+        path="/formulario-modificado"
+        element={<FormularioModificado />}
       />
       <Route exact path="/post" element={<Post />} />
       <Route exact path="/login" element={<Login />} />

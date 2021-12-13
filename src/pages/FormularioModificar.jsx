@@ -4,8 +4,10 @@ import * as yup from "yup";
 import { useNavigate } from 'react-router-dom';
 import logo from "../assets/logo2.png";
 
-export const FormularioModificar = () => {
+export const FormularioModificado = (props) => {
+  
   let schemaProductos = yup.object().shape({
+    _id: yup.string().required(),
     nomFarmacia: yup.string().required(),
     nomProducto: yup.string().required(),
     nomProductoGen: yup.string().required(),
@@ -18,6 +20,7 @@ export const FormularioModificar = () => {
   });
 
   const navigate = useNavigate();
+  const _id = props;
   const [nomFarmacia, setNomFarmacia] = useState("");
   const [nomProducto, setNomProducto] = useState("");
   const [nomProductoGen, setNomProductoGen]=useState("");
@@ -33,6 +36,7 @@ export const FormularioModificar = () => {
   useEffect(() => {
     schemaProductos
       .isValid({
+        _id,
         nomFarmacia,
         nomProducto,
         nomProductoGen,
@@ -46,7 +50,7 @@ export const FormularioModificar = () => {
       .then((valid) => {
         valid ? setHabilitado(true) : setHabilitado(false);
       });
-  }, [nomFarmacia, nomProducto, nomProductoGen, codigoProducto, imagen, descrip, precio, descuento, stock]);
+  }, [_id, nomFarmacia, nomProducto, nomProductoGen, codigoProducto, imagen, descrip, precio, descuento, stock]);
 
   //////////////////////////////
 
@@ -68,18 +72,19 @@ export const FormularioModificar = () => {
       stock: stock
     });
 
-    /* const options = {
+    const options = {
       method: "PUT",
       //mode:'no-cors',
       headers: myHeaders,
       body: raw,
       redirect: "follow"
-    }; */
+    };
 
     const postData = await fetch(
-      "https://backend-farmacias-ya.herokuapp.com/producto/eliminar/"+_id/* , options */
+      "https://backend-farmacias-ya.herokuapp.com/productos/editar/"+_id,
+      options
     );
-    setTimeout(function(){  navigate("/farmacia");; }, 4000);
+    setTimeout(function(){navigate("/farmacia");; }, 1000);
     //const res = postData.json();
     //console.log(res);
     ////////////////////
@@ -209,7 +214,16 @@ export const FormularioModificar = () => {
               enviarD(e.preventDefault());
             }}
           >
-            {habilitado ?"Enviar":"Deshabilitado"}
+            {habilitado ?"Editar":"Deshabilitado"}
+          </button>
+            <button
+            type="submit"
+            className="btn btn-warning col-md-12"
+            onClick={() => {
+              navigate("/farmacia")
+            }}
+          >
+            Cancelar
           </button>
           </div>
         </form>

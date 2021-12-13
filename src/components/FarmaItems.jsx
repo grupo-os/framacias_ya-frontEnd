@@ -64,7 +64,7 @@ async function postData(url = 'https://backend-farmacias-ya.herokuapp.com/produc
               Borrar
             </button>
             <div>
-              <Link to="#" className="a">
+              <Link to="../formulario-modificado" className="a">
                 Vista
               </Link>
             </div>
