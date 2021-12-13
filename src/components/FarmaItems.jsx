@@ -32,6 +32,7 @@ async function postData(url = 'https://backend-farmacias-ya.herokuapp.com/produc
     referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
     body: JSON.stringify(data) // body data type must match "Content-Type" header
   });
+  restart()
   return response.json(); // parses JSON response into native JavaScript objects
 }
 ////////////////////////////////7
@@ -42,7 +43,9 @@ async function postData(url = 'https://backend-farmacias-ya.herokuapp.com/produc
 ////////////////////////////////
 
 
-
+const restart = ()=>{
+  setTimeout(function(){window.location.href="/farmacia"}, 2000);
+}
 
 
 
