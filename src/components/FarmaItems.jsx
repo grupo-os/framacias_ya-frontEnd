@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { DataContext } from "../context/DataProvider.jsx";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
@@ -6,7 +6,7 @@ import "../styles/Spin.css";
 import "animate.css";
 import { axios } from "axios";
 import { useNavigate } from 'react-router-dom';
-import { FormularioModificado } from "../pages/FormularioModificado.jsx";
+
 
 
 export const FarmaItems = () => {
@@ -40,6 +40,9 @@ async function postData(url = 'https://backend-farmacias-ya.herokuapp.com/produc
 ////////////////////////////////
 /* curl --location --request PUT 'https://backend-farmacias-ya.herokuapp.com/producto/eliminar/61b41221bc4fff45c7c8d594' */
 ////////////////////////////////
+
+
+
 
 
 

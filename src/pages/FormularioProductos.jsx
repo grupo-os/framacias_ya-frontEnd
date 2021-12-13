@@ -1,8 +1,9 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import * as yup from "yup";
 import { useNavigate } from 'react-router-dom';
 import logo from "../assets/logo2.png";
+import axios from "axios";
 
 export const FormularioProductos = () => {
   let schemaProductos = yup.object().shape({
@@ -16,13 +17,13 @@ export const FormularioProductos = () => {
     descuento: yup.number().required().positive(),
     stock: yup.number().required().positive().integer()
   });
-
+  //const inputFileRef = useRef();
   const navigate = useNavigate();
   const [nomFarmacia, setNomFarmacia] = useState("");
   const [nomProducto, setNomProducto] = useState("");
   const [nomProductoGen, setNomProductoGen]=useState("");
   const [codigoProducto, setCodigoProducto]=useState("");
-  const [imagen, setImagen] = useState(null);
+  const [imagen, setImagen] = useState("");
   const [descrip, setDescrip] = useState("");
   const [precio, setPrecio] = useState("");
   const [descuento, setDescuento] = useState("");
@@ -50,7 +51,32 @@ export const FormularioProductos = () => {
 
   //////////////////////////////
 
-  const enviarD = async () => {
+    const enviarD = async () => {
+  
+    /*  
+
+    e.preventDefault();
+    const imagen = inputFileRef.current.files[0];
+    console.log(imagen);
+    setImagen(imagen);
+    const formData = new FormData();
+    formData.append('farmacia', nomFarmacia)
+    formData.append('nombre_producto', nomProducto)
+    formData.append('nombre_generico', nomProductoGen)
+    formData.append('codigo_producto', codigoProducto)
+    formData.append('descripcion', descrip)
+    formData.append('precio', precio)
+    formData.append('descuento', descuento)
+    formData.append('stock', stock)
+    formData.append('img', imagen)
+
+    await axios.post('https://backend-farmacias-ya.herokuapp.com/productos/subir-producto', formData, {
+      headers:{
+        'Content-Type': 'multipart/form-data'
+      }
+    }) */
+
+
     ////////////////////
     let myHeaders = new Headers();
 
@@ -76,11 +102,10 @@ export const FormularioProductos = () => {
       redirect: "follow"
     };
 
-    const postData = await fetch(
-      "https://backend-farmacias-ya.herokuapp.com/productos/subir-producto",
-      options
-    );
-    setTimeout(function(){  navigate("/farmacia");; }, 4000);
+    const postData = await fetch("https://backend-farmacias-ya.herokuapp.com/productos/subir-producto", options)
+		const res = postData.json()
+		console.log(res)
+    setTimeout(function(){  navigate("/farmacia");; }, 1000);
     //const res = postData.json();
     //console.log(res);
     ////////////////////
@@ -148,13 +173,16 @@ export const FormularioProductos = () => {
             <div className="form-group col-md-12">
             <label for="inputAddress">link de imagen</label>
             <input
-              type="file"
+              type="text"
               className="form-control"
               id="imagen"
               placeholder="ingrese el link de la imagen"
+              
               onChange={(e) => {
-                setImagen(e.target.files);
+                setImagen(e.target.value);
               }}
+
+              //ref={inputFileRef}
             />
           </div>
           <div className="form-group col-md-12">
