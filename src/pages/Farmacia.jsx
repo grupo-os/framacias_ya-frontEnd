@@ -1,9 +1,10 @@
 import React, { useContext } from "react";
 import { FarmaItems } from "../components/FarmaItems";
 import { DataContext } from "../context/DataProvider";
+import { Carrito } from "../components/Carrito";
 import "../styles/Farmacia.css";
 import "../styles/CarritoIcon.css";
-import { Carrito } from "../components/Carrito";
+import { Search } from "../components/Search";
 
 export const Farmacia = () => {
   const value = useContext(DataContext);
@@ -19,17 +20,7 @@ export const Farmacia = () => {
   return (
     <>
       <h1 className="title">PRODUCTOS</h1>
-      <div className="d-flex col-xs-6 col-md-4">
-        <input
-          class="form-control me-2"
-          type="search"
-          placeholder="Nombre del medicamento..."
-          aria-label="Search"
-        />
-        <button class="btn btn-dark" type="submit">
-          Search
-        </button>
-      </div>
+      <Search />
 
       <div className="cart" onClick={toogleMenu}>
         <box-icon name="cart"></box-icon>

@@ -8,6 +8,8 @@ export const DataProvider = (props) => {
   const [menu, setMenu] = useState(false);
   const [total, setTotal] = useState(0);
   const [items, setItems] = useState([]);
+  const [itemBuscado, setItemBuscado] = useState([]); 
+  const [busqueda, setBusqueda] = useState("");
 
   //OBTENER LOS DATOS DEL BACK-END...
   const fetchMedicamentos = async () => {
@@ -15,14 +17,12 @@ export const DataProvider = (props) => {
       const peticion = await fetch(URL);
       const res = await peticion.json();
       setItems(res);
+      console.log(res)
     } catch (error) {
       console.log(error);
     }
   };
-  useEffect(() => {
-    fetchMedicamentos();
-  }, []);
-
+ 
   //AÑADE UN ARTICULO AL CARRITO...
   const addCarrito = (id) => {
     const check = carrito.every((item) => {
@@ -65,6 +65,31 @@ export const DataProvider = (props) => {
     getTotal();
   }, [carrito]);
 
+  //----------------------------FUNCION SEARCH...----------------------------//
+  const handleChange = (e) => {
+    setBusqueda(e.target.value);
+    filtrar(e.target.value);
+  };
+
+  const filtrar = (terminoBusqueda) => {
+    let resultadoBusqueda = items.filter((elemento) => {
+      if (
+        elemento.nombre_producto
+          .toString()
+          .toLowerCase()
+          .includes(terminoBusqueda.toLowerCase()) ||
+        elemento.farmacia
+          .toString()
+          .toLowerCase()
+          .includes(terminoBusqueda.toLowerCase())
+      ) {
+        return elemento;
+      }
+    });
+    setItemBuscado(resultadoBusqueda);
+  };
+  console.log(itemBuscado)
+
   //ALAMCENAMOS LOS DATOS Y FUNCIONES A UTILIZAR...
   const value = {
     items: [items],
@@ -72,7 +97,10 @@ export const DataProvider = (props) => {
     addCarrito: addCarrito,
     total: [total, setTotal],
     menu: [menu, setMenu],
-    fetchMedicamentos : fetchMedicamentos
+    fetchMedicamentos: fetchMedicamentos,
+    busqueda: [busqueda],
+    handleChange: handleChange,
+    itemBuscado: [itemBuscado]
   };
   return (
     <DataContext.Provider value={value}>{props.children}</DataContext.Provider>

@@ -9,12 +9,14 @@ export const FarmaItems = () => {
   const value = useContext(DataContext);
   const addCarrito = value.addCarrito;
   const fetchMedicamentos = value.fetchMedicamentos;
-  const [items] = value.items;
+  const [items] = value.itemBuscado;
+  // const [productos] = value.items
 
   useEffect(() => {
     fetchMedicamentos();
   }, []);
-  console.log(value.items._id);
+
+  console.log(items._id);
   return items.length > 0 ? (
     items.map((item) => {
       return (
@@ -32,7 +34,7 @@ export const FarmaItems = () => {
               Añadir al carrito
             </button>
             <div>
-              <Link to="#" className="a">
+              <Link to={`/producto/${item._id}`} className="a">
                 Vista
               </Link>
             </div>

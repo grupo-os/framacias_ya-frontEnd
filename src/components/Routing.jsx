@@ -7,6 +7,8 @@ import { Farmacia } from "../pages/Farmacia";
 import { FormularioProductos } from "../pages/FormularioProductos";
 import { useState, useEffect } from "react";
 import JsonData from "../data/data.json";
+import { ProductDetails } from "../pages/ProductDetails";
+import { FarmaciaReg } from "../pages/FarmaciaReg";
 
 export const Routing = () => {
   const [landingPageData, setLandingPageData] = useState({});
@@ -29,6 +31,9 @@ export const Routing = () => {
         path="/formulario-productos"
         element={<FormularioProductos />}
       />
+      <Route exact path="/producto/:_id" element={<ProductDetails />} />
+      <Route exact path="/register/farmacia" element={<FarmaciaReg />} />
+
     </Routes>
   );
 };
