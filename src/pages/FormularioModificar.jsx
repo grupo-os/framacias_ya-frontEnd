@@ -4,7 +4,7 @@ import * as yup from "yup";
 import { useNavigate } from 'react-router-dom';
 import logo from "../assets/logo2.png";
 
-export const FormularioProductos = () => {
+export const FormularioModificar = () => {
   let schemaProductos = yup.object().shape({
     nomFarmacia: yup.string().required(),
     nomProducto: yup.string().required(),
@@ -68,17 +68,16 @@ export const FormularioProductos = () => {
       stock: stock
     });
 
-    const options = {
-      method: "POST",
+    /* const options = {
+      method: "PUT",
       //mode:'no-cors',
       headers: myHeaders,
       body: raw,
       redirect: "follow"
-    };
+    }; */
 
     const postData = await fetch(
-      "https://backend-farmacias-ya.herokuapp.com/productos/subir-producto",
-      options
+      "https://backend-farmacias-ya.herokuapp.com/producto/eliminar/"+_id/* , options */
     );
     setTimeout(function(){  navigate("/farmacia");; }, 4000);
     //const res = postData.json();
