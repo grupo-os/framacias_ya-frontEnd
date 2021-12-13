@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { DataContext } from "../context/DataProvider.jsx";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useContext } from "react";
 import "../styles/Spin.css";
 import "animate.css";
@@ -11,10 +11,12 @@ import { useNavigate } from 'react-router-dom';
 
 export const FarmaItems = () => {
   const value = useContext(DataContext);
-  const addCarrito = value.addCarrito;
+ // const addCarrito = value.addCarrito;
   const fetchMedicamentos = value.fetchMedicamentos;
   const [items] = value.items;
-  const navigate = useNavigate();
+  const {id} = useParams();
+  console.log(id)
+ // const navigate = useNavigate();
 ////////////////////////////////7
 // Ejemplo implementando el metodo POST:
 async function postData(url = 'https://backend-farmacias-ya.herokuapp.com/producto/eliminar/', data) {
@@ -35,8 +37,9 @@ async function postData(url = 'https://backend-farmacias-ya.herokuapp.com/produc
   restart()
   return response.json(); // parses JSON response into native JavaScript objects
 }
-////////////////////////////////7
 
+
+////////////////////////////////7
 
 ////////////////////////////////
 /* curl --location --request PUT 'https://backend-farmacias-ya.herokuapp.com/producto/eliminar/61b41221bc4fff45c7c8d594' */
@@ -47,12 +50,11 @@ const restart = ()=>{
   setTimeout(function(){window.location.href="/farmacia"}, 2000);
 }
 
-
-
   useEffect(() => {
     fetchMedicamentos();
+    
   }, []);
-  console.log(items._id);
+  
   return items.length > 0 ? (
     items.map((item) => {
       return (
