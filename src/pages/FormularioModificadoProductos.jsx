@@ -110,7 +110,7 @@ export const FormularioModificadoProductos = () => {
 		const res = postData.json()
 		console.log(res) */
    
-   setTimeout(function(){  navigate("/");; }, 500);
+   setTimeout(function(){  navigate("/farmacia2");; }, 500);
 
   
    //const res = postData.json();
@@ -119,7 +119,7 @@ export const FormularioModificadoProductos = () => {
   };
 
   const volver = ()=>{
-    navigate("/farmacia");
+    navigate("/farmacia2");
    }
 
   return (

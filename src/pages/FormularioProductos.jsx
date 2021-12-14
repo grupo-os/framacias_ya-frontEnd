@@ -106,7 +106,7 @@ export const FormularioProductos = () => {
 		const res = postData.json()
 		console.log(res)
     */
-   setTimeout(function(){  navigate("/farmacia");; }, 1000);
+   setTimeout(function(){  navigate("/farmacia2");; }, 1000);
    //const res = postData.json();
     //console.log(res);
     ////////////////////

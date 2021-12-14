@@ -36,10 +36,10 @@ export const Routing = () => {
       <Route exact path="/post" element={<Post />} />
       <Route exact path="/login" element={<Login />} />
       <Route exact path="/register" element={<Register />} />
-      <Route exact path="/farmacia" element={<Farmacia />} />
+      <Route exact path="/farmacia2" element={<Farmacia />} />
       <Route
         exact
-        path="/formulario-productos"
+        path="/formulario-productos2"
         element={<FormularioProductos />}
       />
     </Routes>
