@@ -1,14 +1,11 @@
-export const initialState = null;
+import React from "react";
+import { Navigate, Route } from "react-router";
 
-export const Reducer = (state, action) => {
-  if (action.type === "USER") {
-    return action.payload;
-  }
-  if (action.type === "TOKEN") {
-    return action.payload;
-  }
-  if (action.type === "CLEAR") {
-    return null;
-  }
-  return state;
-};
+const usuarioT = localStorage.getItem("loggedUser");
+//const user = {id: 1, username: "lenny123"}
+
+export default function PrivateRoute({ element: Element, ...rest }) {
+  return (
+    <Route {...rest}>{usuarioT ? <Navigate to="/" /> : <Element />}</Route>
+  );
+}

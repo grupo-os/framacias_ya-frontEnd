@@ -1,0 +1,14 @@
+.Map {
+    width: 100%;
+    height: 500px;
+}
+
+.Map-container {
+    margin: auto;
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    width: 80%;
+    min-height: 80vh;
+}

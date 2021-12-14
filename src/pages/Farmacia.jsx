@@ -20,13 +20,16 @@ export const Farmacia = () => {
   return (
     <>
       <h1 className="title">PRODUCTOS</h1>
+
       <Search />
 
       <div className="cart" onClick={toogleMenu}>
         <box-icon name="cart"></box-icon>
         <span className="item__total"> {carrito.length} </span>
       </div>
+
       <Carrito />
+
       <div className="productos">
         <FarmaItems />
       </div>

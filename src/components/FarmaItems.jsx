@@ -4,21 +4,22 @@ import { Link } from "react-router-dom";
 import { useContext } from "react";
 import "../styles/Spin.css";
 import "animate.css";
+import { useState } from "react";
 
 export const FarmaItems = () => {
   const value = useContext(DataContext);
   const addCarrito = value.addCarrito;
   const fetchMedicamentos = value.fetchMedicamentos;
-  const [items] = value.itemBuscado;
-  // const [productos] = value.items
+  const [itemBuscado] = value.itemBuscado;
+  // const [items] = value.items;
+  // const [meds] = value.meds;
 
   useEffect(() => {
     fetchMedicamentos();
   }, []);
 
-  console.log(items._id);
-  return items.length > 0 ? (
-    items.map((item) => {
+  return itemBuscado.length > 0 ? (
+    itemBuscado.map((item) => {
       return (
         <div className="producto animate__animated animate__fadeInUp">
           <div className="producto__img">

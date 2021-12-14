@@ -30,11 +30,11 @@ export function Navbar() {
                 Inicio{" "}
               </Link>
             </li>
-            <li className="nav-item">
+            {/* <li className="nav-item">
               <Link className="nav-link" to="/post">
                 FarMaps{" "}
               </Link>
-            </li>
+            </li> */}
             <li className="nav-item">
               <Link className="nav-link" to="/formulario-productos">
                 FormularioProductos{" "}

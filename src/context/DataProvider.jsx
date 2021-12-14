@@ -8,8 +8,9 @@ export const DataProvider = (props) => {
   const [menu, setMenu] = useState(false);
   const [total, setTotal] = useState(0);
   const [items, setItems] = useState([]);
-  const [itemBuscado, setItemBuscado] = useState([]); 
+  const [itemBuscado, setItemBuscado] = useState([]);
   const [busqueda, setBusqueda] = useState("");
+  const [meds, setMeds] = useState([])
 
   //OBTENER LOS DATOS DEL BACK-END...
   const fetchMedicamentos = async () => {
@@ -17,12 +18,13 @@ export const DataProvider = (props) => {
       const peticion = await fetch(URL);
       const res = await peticion.json();
       setItems(res);
-      console.log(res)
+      
+      console.log(res);
     } catch (error) {
       console.log(error);
     }
   };
- 
+
   //AÑADE UN ARTICULO AL CARRITO...
   const addCarrito = (id) => {
     const check = carrito.every((item) => {
@@ -66,10 +68,6 @@ export const DataProvider = (props) => {
   }, [carrito]);
 
   //----------------------------FUNCION SEARCH...----------------------------//
-  const handleChange = (e) => {
-    setBusqueda(e.target.value);
-    filtrar(e.target.value);
-  };
 
   const filtrar = (terminoBusqueda) => {
     let resultadoBusqueda = items.filter((elemento) => {
@@ -77,18 +75,23 @@ export const DataProvider = (props) => {
         elemento.nombre_producto
           .toString()
           .toLowerCase()
-          .includes(terminoBusqueda.toLowerCase()) ||
+          .includes(terminoBusqueda.toLowerCase()) /* ||
         elemento.farmacia
-          .toString()
+          .toString()  
           .toLowerCase()
-          .includes(terminoBusqueda.toLowerCase())
+          .includes(terminoBusqueda.toLowerCase()) */
       ) {
+        console.log(elemento.farmacia)
         return elemento;
       }
     });
     setItemBuscado(resultadoBusqueda);
   };
-  // console.log(itemBuscado)
+
+  const handleChange = (e) => {
+    setBusqueda(e.target.value);
+    filtrar(e.target.value);
+  };
 
   //ALAMCENAMOS LOS DATOS Y FUNCIONES A UTILIZAR...
   const value = {
@@ -100,7 +103,8 @@ export const DataProvider = (props) => {
     fetchMedicamentos: fetchMedicamentos,
     busqueda: [busqueda],
     handleChange: handleChange,
-    itemBuscado: [itemBuscado]
+    itemBuscado: [itemBuscado],
+    meds: [meds],
   };
   return (
     <DataContext.Provider value={value}>{props.children}</DataContext.Provider>

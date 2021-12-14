@@ -20,7 +20,6 @@ export const Login = () => {
     event.preventDefault();
 
     try {
-        
       //le pasamos las credenciales
       const user = await loginServicios.buscador({
         email,
@@ -40,7 +39,7 @@ export const Login = () => {
       setemail("");
       setPassword("");
       //Redireccionamos a la ruta home
-      window.location.href = "/";
+      window.location.href = "/farmacia";
 
       setErrorMessage("Sesion Iniciada");
       setTimeout(() => {
@@ -54,23 +53,25 @@ export const Login = () => {
       }, 3000);
       console.log("Error", e);
     }
-    console.log(email)
-    console.log(password)
+    console.log(email);
+    console.log(password);
   };
   return (
     <div class="login-form">
       <div class="cotainer">
         <div class="row justify-content-center">
-          <div class="col-md-8">
+          <div class="col-md-6">
             <form class="card" onSubmit={handleSubmit}>
-              <div class="card-header">Register</div>
+              <div class="card-header">
+                <h5>Iniciar Sesión</h5>
+              </div>
               <div class="card-body">
                 <div class="form-group row">
                   <label
                     for="email_address"
                     class="col-md-4 col-form-label text-md-right"
                   >
-                    Correo electrónico
+                    <b>Correo electrónico</b>
                   </label>
                   <div class="col-md-6">
                     <input
@@ -91,7 +92,7 @@ export const Login = () => {
                     for="password"
                     class="col-md-4 col-form-label text-md-right"
                   >
-                    Password
+                    <b>Contraseña</b>
                   </label>
                   <div class="col-md-6">
                     <input

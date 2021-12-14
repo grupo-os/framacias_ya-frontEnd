@@ -50,12 +50,12 @@ export const Register = () => {
   return (
     <div className="container contenedor">
       <div className="row main">
-        <div className="main-login main-center" id="title">
+        <div className="main-login main-center text-center" id="title">
           <h5>Registro</h5>
           <form className="" method="post" action="#">
             <div className="form-group">
               <label for="username" className="cols-sm-2 control-label">
-                Correo electronico
+                <b>Correo electronico</b>
               </label>
               <div className="cols-sm-10">
                 <div className="input-group">
@@ -76,7 +76,7 @@ export const Register = () => {
 
             <div className="form-group">
               <label for="password" className="cols-sm-2 control-label">
-                Contraseña
+                <b>Contraseña</b>
               </label>
               <div className="cols-sm-10">
                 <div className="input-group">
@@ -97,7 +97,7 @@ export const Register = () => {
 
             <div className="form-group">
               <label for="confirm" className="cols-sm-2 control-label">
-                Confirmar contraseña
+                <b>Confirmar contraseña</b>
               </label>
               <div className="cols-sm-10">
                 <div className="input-group">
@@ -116,7 +116,7 @@ export const Register = () => {
               </div>
             </div>
             <br />
-            <div class="form-check">
+            {/* <div class="form-check">
               <input
                 class="form-check-input"
                 type="radio"
@@ -138,7 +138,7 @@ export const Register = () => {
               <label class="form-check-label" for="flexRadioDefault2">
                 Soy un prestador farmaceutico
               </label>
-            </div>
+            </div> */}
 
             <div className="form-group ">
               <button
