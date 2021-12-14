@@ -51,7 +51,7 @@ export const FormularioProductos = () => {
 
   //////////////////////////////
 
-    const enviarD = async (e) => {
+    const enviarD = async () => {
   
      
 

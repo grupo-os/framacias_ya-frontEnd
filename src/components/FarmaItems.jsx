@@ -14,12 +14,15 @@ export const FarmaItems = () => {
  // const addCarrito = value.addCarrito;
   const fetchMedicamentos = value.fetchMedicamentos;
   const [items] = value.items;
-  const {id} = useParams();
+/*   const {id, nombre_producto} = useParams();
   console.log(id)
+  console.log(nombre_producto) */
  // const navigate = useNavigate();
 ////////////////////////////////7
 // Ejemplo implementando el metodo POST:
 async function postData(url = 'https://backend-farmacias-ya.herokuapp.com/producto/eliminar/', data) {
+
+
   // Opciones por defecto estan marcadas con un *
   const response = await fetch(url, {
     method: 'PUT', // *GET, POST, PUT, DELETE, etc.
@@ -35,6 +38,7 @@ async function postData(url = 'https://backend-farmacias-ya.herokuapp.com/produc
     body: JSON.stringify(data) // body data type must match "Content-Type" header
   });
   restart()
+  alert("elemento borrado")
   return response.json(); // parses JSON response into native JavaScript objects
 }
 
@@ -75,9 +79,10 @@ const restart = ()=>{
               Borrar
             </button>
             <div>
-              <Link to="../formulario-modificado" className="a">
-                Vista
+              <Link to={{pathname:'/formulariomodificado/'+item._id+'/'+item.nombre_producto}} className="a">
+                Modificar
               </Link>
+              {/* <Link  to ={{pathname:'/detalle/' + item._id}} class="btn-leer-mas" >Leer Más</Link> */}
             </div>
           </div>
         </div>
