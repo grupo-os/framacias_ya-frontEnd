@@ -14,6 +14,9 @@ export const Farmacia = () => {
  /*  const toogleMenu = () => {
     setMenu(!menu);
     console.log(menu);
+    //
+    -26.184941, -58.182381
+    //
   }; */
 
   return (
