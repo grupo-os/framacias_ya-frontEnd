@@ -29,7 +29,7 @@ export const Maps = () => {
           }
         >
           <Popup>
-            A pretty CSS3 popup. <br /> Easily customizable.
+            Encontrado. <br /> Farmacia Santa-Fe
           </Popup>
         </Marker>
       </MapContainer>

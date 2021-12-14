@@ -57,7 +57,7 @@ export const Login = () => {
     console.log(password);
   };
   return (
-    <div class="login-form">
+    <div class="login-form" onSubmit={handleSubmit}>
       <div class="cotainer">
         <div class="row justify-content-center">
           <div class="col-md-6">
