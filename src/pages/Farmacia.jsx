@@ -20,15 +20,15 @@ export const Farmacia = () => {
     <>
       <h1 className="title">PRODUCTOS</h1>
       <div className="d-flex col-xs-6 col-md-4">
-        <input
+       {/*  <input
           class="form-control me-2"
           type="search"
           placeholder="Nombre del medicamento..."
           aria-label="Search"
-        />
-        <button class="btn btn-dark" type="submit">
+        /> */}
+{/*         <button class="btn btn-dark" type="submit">
           Search
-        </button>
+        </button> */}
       </div>
 
      {/*  <div className="cart" onClick={toogleMenu}>
