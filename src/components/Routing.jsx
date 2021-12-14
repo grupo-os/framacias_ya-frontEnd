@@ -17,7 +17,6 @@ export const UserContext = createContext();
 
 export const Routing = () => {
   const [landingPageData, setLandingPageData] = useState({});
-  // const { state, dispatch } = useContext(UserContext);
 
   useEffect(() => {
     setLandingPageData(JsonData);
