@@ -1,61 +1,76 @@
 import { Link } from "react-router-dom";
-import styles from "../styles/Navbar.module.css";
 import logo from "../assets/logo2.png";
-import "../styles/Carrito.css"
+import "../styles/Carrito.css";
+import {
+  MDBBtn,
+  MDBCollapse,
+  MDBContainer,
+  MDBIcon,
+  MDBNavbar,
+  MDBNavbarBrand,
+  MDBNavbarItem,
+  MDBNavbarLink,
+  MDBNavbarNav,
+  MDBNavbarToggler,
+} from "mdb-react-ui-kit";
+import { useState } from "react";
+import "../styles/Navbar.module.css";
 
 export function Navbar() {
-  
+  const [showBasic, setShowBasic] = useState(false);
 
   return (
-    <nav className={`navbar navbar-expand-lg navbar-light ${styles.nav}`}>
-      <div className="container-fluid">
-        <Link className={`navbar-brand ${styles.logo}`} to="/">
-          <img src={logo} alt="logo" width="50" />
-        </Link>
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarSupportedContent"
+    <MDBNavbar expand="lg" dark bgColor="dark">
+      <MDBContainer fluid>
+        <MDBNavbarBrand tag={Link} to="/" className="p-0 m-0">
+          <img src={logo} alt="logo" width="40" />
+        </MDBNavbarBrand>
+
+        <MDBNavbarToggler
           aria-controls="navbarSupportedContent"
           aria-expanded="false"
           aria-label="Toggle navigation"
+          onClick={() => setShowBasic(!showBasic)}
         >
-          <span className="navbar-toggler-icon"></span>
-        </button>
-        <div className="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-            <li className="nav-item">
-              <Link className="nav-link" to="/">
-                Inicio{" "}
-              </Link>
-            </li>
-            {/* <li className="nav-item">
-              <Link className="nav-link" to="/post">
-                FarMaps{" "}
-              </Link>
-            </li> */}
-            <li className="nav-item">
-              <Link className="nav-link" to="/formulario-productos">
-                FormularioProductos{" "}
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/farmacia">
-                Farmacia{" "}
-              </Link>
-            </li>
-          </ul>
+          <MDBIcon icon="bars" fas />
+        </MDBNavbarToggler>
 
-          
-          <Link className="btn btn-secondary mx-2" type="submit" to="/login">
-            Iniciar sesión{" "}
-          </Link>
-          <Link className="btn btn-secondary mx-2" type="submit" to="/register">
-            Registrarse{" "}
-          </Link>
-        </div>
-      </div>
-    </nav>
+        <MDBCollapse navbar show={showBasic}>
+          <MDBNavbarNav className="mr-auto mb-2 mb-lg-0">
+            <MDBNavbarItem>
+              <MDBNavbarLink active aria-current="page" tag={Link} to="/">
+                Inicio
+              </MDBNavbarLink>
+            </MDBNavbarItem>
+            <MDBNavbarItem>
+              <MDBNavbarLink tag={Link} to="/post">
+                FarMaps{" "}
+              </MDBNavbarLink>
+            </MDBNavbarItem>
+
+            <MDBNavbarItem>
+              <MDBNavbarLink tag={Link} to="/formulario-productos">
+                FormularioProductos
+              </MDBNavbarLink>
+            </MDBNavbarItem>
+
+            <MDBNavbarItem>
+              <MDBNavbarLink tag={Link} to="/farmacia">
+                Farmacia
+              </MDBNavbarLink>
+            </MDBNavbarItem>
+          </MDBNavbarNav>
+
+          <form className="d-flex justify-content-end">
+            <MDBBtn className="mx-2" rounded tag={Link} to="/login">
+              Iniciar Sesion
+            </MDBBtn>
+            <MDBBtn rounded color="success" tag={Link} to="/register">
+              Registrarse
+            </MDBBtn>
+          </form>
+        </MDBCollapse>
+      </MDBContainer>
+    </MDBNavbar>
   );
 }

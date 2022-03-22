@@ -1,6 +1,5 @@
-.nav {
+/* .nav {
   background-color: #00a3bd;
-  font-family: Arial, Helvetica, sans-serif;
 }
 
 .logo {
@@ -9,4 +8,7 @@
 }
 ul {
   color: black;
+} */
+*{
+  font-family: Roboto, Helvetica, Arial, sans-serif;
 }
